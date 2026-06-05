@@ -7,6 +7,7 @@
 Refactoring du ChatBot (TP2) en appliquant le **BLOC State Management Pattern** pour séparer la logique UI de la logique applicative.
 
 ## 📁 Architecture
+```
 lib/
 ├── main.dart
 ├── model/
@@ -18,12 +19,15 @@ lib/
 └── pages/
 ├── login.page.dart              # Login (admin/1234)
 └── chat.bot.page.dart           # UI avec BlocBuilder
+```
 ## 🔄 Flux BLOC
+```
 UI → AskLLMEvent → ChatBotBloc → ChatBotRepository → API
 ↓
 UI ← BlocBuilder ← ChatBotSuccessState ←──────────────┘
 ← ChatBotErrorState + Retry
 ← ChatBotPendingState + Spinner
+```
 ## 📊 States
 
 | State | Description |
