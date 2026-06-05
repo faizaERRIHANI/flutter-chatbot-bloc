@@ -1,16 +1,41 @@
-# chat_bot_app
+# ChatBot Flutter - BLOC Pattern (Partie 2)
 
-A new Flutter project.
+## Objectif
+Refactoring du ChatBot (TP2) en appliquant le **BLOC State Management Pattern** pour séparer la logique UI de la logique applicative.
 
-## Getting Started
+## Architecture BLOC
+lib/
+├── main.dart
+├── model/
+│   └── chat.bot.model.dart          # Modèle Message
+├── repository/
+│   └── chat.bot.repository.dart     # Appel API (OpenAI/Ollama)
+├── bloc/
+│   └── chat.bot.bloc.dart           # Events + States + Bloc
+└── pages/
+├── login.page.dart              # Login (admin/1234)
+└── chat.bot.page.dart           # UI avec BlocBuilder
+## Events
+- `AskLLMEvent(query)` — envoi d'une question
 
-This project is a starting point for a Flutter application.
+## States
+| State | Description |
+|-------|-------------|
+| `ChatBotInitialState` | Messages initiaux Hello/How can i help you |
+| `ChatBotPendingState` | Chargement en cours (CircularProgressIndicator) |
+| `ChatBotSuccessState` | Réponse reçue avec succès |
+| `ChatBotErrorState` | Erreur API + bouton Retry |
 
-A few resources to get you started if this is your first Flutter project:
+## Dépendances
+- `flutter_bloc: ^8.1.3`
+- `http: ^1.2.0`
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Lancer le projet
+```bash
+flutter pub get
+flutter run
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Références
+- Part 1 Counter: https://www.youtube.com/watch?v=PtYSPm8KWxw
+- Part 2 ChatBot: https://www.youtube.com/watch?v=rXwIwp_lJu8
